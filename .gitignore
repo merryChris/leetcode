@@ -1,0 +1,7 @@
+# Ignore all intermediate python files.
+*.pyc
+
+# Ignore all swp files
+*.swo
+*.swp
+*~
