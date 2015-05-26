@@ -1,5 +1,5 @@
 class Solution:
-    # 100
+    ### 100. Same Tree ###
     # @param {TreeNode} p
     # @param {TreeNode} q
     # @return {boolean}
@@ -9,7 +9,7 @@ class Solution:
 
         return p.val == q.val and self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
 
-    # 101
+    ### 101. Symmetric Tree ###
     # @param {TreeNode} root
     # @return {boolean}
     def isSymmetric(self, root):
@@ -23,7 +23,7 @@ class Solution:
 
         return dfs(root.left, root.right)
 
-    # 102
+    ### 102. Binary Tree Level Order Traversal ###
     # @param {TreeNode} root
     # @return {integer[][]}
     def levelOrder(self, root):
@@ -44,7 +44,7 @@ class Solution:
 
         return order
 
-    # 103
+    ### 103. Binary Tree Zigzag Level Order Traversal ###
     # @param {TreeNode} root
     # @return {integer[][]}
     def zigzagLevelOrder(self, root):
@@ -66,7 +66,7 @@ class Solution:
 
         return order
 
-    # 104
+    ### 104. Maximum Depth of Binary Tree ###
     # @param {TreeNode} root
     # @return {integer}
     def maxDepth(self, root):
@@ -75,7 +75,7 @@ class Solution:
 
         return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
 
-    # 105
+    ### 105. Construct Binary Tree from Preorder and Inorder Traversal ###
     # @param {integer[]} preorder
     # @param {integer[]} inorder
     # @return {TreeNode}
@@ -90,7 +90,7 @@ class Solution:
 
         return root
 
-    # 106
+    ### 106. Construct Binary Tree from Inorder and Postorder Traversal ###
     # @param {integer[]} inorder
     # @param {integer[]} postorder
     # @return {TreeNode}
@@ -105,7 +105,7 @@ class Solution:
 
         return root
 
-    # 107
+    ### 107. Binary Tree Level Order Traversal II ###
     # @param {TreeNode} root
     # @return {integer[][]}
     def levelOrderBottom(self, root):
@@ -127,7 +127,7 @@ class Solution:
         return order[::-1]
 
 
-    # 108
+    ### 108. Convert Sorted Array to Binary Search Tree ###
     # @param {integer[]} nums
     # @return {TreeNode}
     def sortedArrayToBST(self, nums):
@@ -140,7 +140,7 @@ class Solution:
 
         return root
 
-    # 109
+    ### 109. Convert Sorted List to Binary Search Tree ###
     # @param {ListNode} head
     # @return {TreeNode}
     def sortedListToBST(self, head):

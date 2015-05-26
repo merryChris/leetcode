@@ -1,5 +1,5 @@
 class Solution:
-    # 187.
+    ### 187. Repeated DNA Sequences ###
     # @param s, a string
     # @return a list of strings
     def findRepeatedDnaSequences(self, s):
@@ -16,7 +16,7 @@ class Solution:
 
         return ans
 
-    # 199
+    ### 188. Best Time to Buy and Sell Stock IV ###
     # @param {integer} k
     # @param {integer[]} prices
     # @return {integer}
@@ -37,7 +37,7 @@ class Solution:
         return dp2[k]
 
 
-    # 189.
+    ### 189. Rotate Array ###
     # @param nums, a list of integer
     # @param k, num of steps
     # @return nothing, please modify the nums list in-place
@@ -45,7 +45,7 @@ class Solution:
         k %= len(nums)
         nums[:] = nums[-k:] + nums[:-k]
 
-    # 190.
+    ### 190. Reverse Bits ###
     # @param n, an integer
     # @return an integer
     def reverseBits(self, n):
@@ -63,7 +63,7 @@ class Solution:
 
         return n
 
-    # 191
+    ### 191. Number of 1 Bits ###
     # @param n, an integer
     # @return an integer
     def hammingWeight(self, n):
@@ -74,7 +74,7 @@ class Solution:
 
         return cnt
 
-    # 198
+    ### 198. House Robber ###
     # @param {integer[]} nums
     # @return {integer}
     def rob(self, nums):
@@ -92,7 +92,7 @@ class Solution:
 
         return max(left, taken)
 
-    # 199
+    ### 199. Binary Tree Right Side View ###
     # @param root, a tree node
     # @return a list of integers
     def rightSideView(self, root):
@@ -115,7 +115,7 @@ class Solution:
 
         return ans
 
-    # 200
+    ### 200. Number of Islands ###
     # @param grid, a list of list of characters
     # @return an integer
     def numIslands(self, grid):
@@ -142,7 +142,7 @@ class Solution:
 
         return cnt
 
-    # 201
+    ### 201. Bitwise AND of Numbers Range ###
     # @param m, an integer
     # @param n, an integer
     # return an integer
@@ -156,7 +156,7 @@ class Solution:
 
         return m & n & k
 
-    # 202
+    ### 202. Happy Number ###
     # @param {integer} n
     # @return {boolean}
     def isHappy(self, n):
@@ -168,7 +168,7 @@ class Solution:
 
         return n == 1
 
-    # 203
+    ### 203. Remove Linked List Elements ###
     # @pararm {ListNode} head
     # @pararm {integer} val
     # @return {ListNode}
@@ -185,7 +185,7 @@ class Solution:
 
         return dummy.next
 
-    # 204
+    ### 204. Count Primes ###
     # @param {integer} n
     # @return {integer}
     def countPrimes(self, n):
@@ -204,7 +204,7 @@ class Solution:
 
         return cnt
 
-    # 205
+    ### 205. Isomorphic Strings ###
     # @param {string} s
     # @param {string} t
     # @return {boolean}
@@ -216,7 +216,7 @@ class Solution:
 
         return len(mapping) == len(set(mapping.values()))
 
-    # 206
+    ### 206. Reverse Linked List ###
     # @param {ListNode} head
     # @return {ListNode}
     def reverseList(self, head):
@@ -232,7 +232,7 @@ class Solution:
 
         return pre
 
-    # 207
+    ### 207. Course Schedule ###
     # @param {integer} numCourses
     # @param {integer[][]} prerequisites
     # @return {boolean}
@@ -262,6 +262,7 @@ class Solution:
 
         return flag
 
+    ### 209. Minimum Size Subarray Sum ###
     # @param {integer} s
     # @param {integer[]} nums
     # @return {integer}

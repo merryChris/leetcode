@@ -1,5 +1,5 @@
 class Solution:
-    # 110
+    ### 110. Balanced Binary Tree ###
     # @param {TreeNode} root
     # @return {boolean}
     def isBalanced(self, root):
@@ -19,7 +19,7 @@ class Solution:
 
         return internalCheck(root)[0]
 
-    # 111
+    ### 111. Minimum Depth of Binary Tree ###
     # @param {TreeNode} root
     # @return {integer}
     def minDepth(self, root):
@@ -32,7 +32,7 @@ class Solution:
         if ld and rd: return min(ld, rd)+1
         return (ld or rd) + 1
 
-    # 112
+    ### 112. Path Sum ###
     # @param {TreeNode} root
     # @param {integer} sum
     # @return {boolean}
@@ -46,7 +46,7 @@ class Solution:
 
         return False
 
-    # 113
+    ### 113. Path Sum II ###
     # @param {TreeNode} root
     # @param {integer} sum
     # @return {integer[][]}
@@ -64,7 +64,7 @@ class Solution:
         dfs(root, sum, [])
         return paths
 
-    # 114
+    ### 114. Flatten Binary Tree to Linked List ###
     # @param {TreeNode} root
     # @return {void} Do not return anything, modify root in-place instead.
     def flatten(self, root):
@@ -84,7 +84,7 @@ class Solution:
 
         return
 
-    # 115
+    ### 115. Distinct Subsequences ###
     # @param {string} s
     # @param {string} t
     # @return {integer}
@@ -97,7 +97,7 @@ class Solution:
 
         return dp[lt]
 
-    # 116, 117
+    ### 116 & 117. Populating Next Right Pointers in Each Node ###
     # @param root, a tree link node
     # @return nothing
     def connect(self, root):
@@ -120,7 +120,7 @@ class Solution:
             del cur
 
 
-    # 118
+    ### 118. Pascal's Triangle ###
     # @param {integer} numRows
     # @return {integer[][]}
     def generate(self, numRows):
@@ -137,7 +137,7 @@ class Solution:
 
         return rows
 
-    # 119
+    ### 119. Pascal's Triangle II ###
     # @param {interger} rowIndex
     # @return {integer[]}
     def getRow(self, rowIndex):

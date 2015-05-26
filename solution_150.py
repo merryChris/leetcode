@@ -1,5 +1,5 @@
 class Solution:
-    # 150
+    ### 150. Evaluate Reverse Polish Notation ###
     # @param {string{}} tokens
     # @return {integer}
     def evalRPN(self, tokens):
@@ -20,13 +20,13 @@ class Solution:
 
         return int(stack.pop())
 
-    # 151
+    ### 151. Reverse Words in a String ###
     # @param s, a string
     # @return a string
     def reverseWords(self, s):
         return ' '.join(s.split()[::-1])
 
-    # 152.
+    ### 152. Maximum Product Subarray ###
     # @param A, a list of integers
     # @return an integer
     def maxProduct(self, A):
@@ -227,7 +227,7 @@ class Solution:
 
         return ans
 
-    # 171.
+    ### 171. Excel Sheet Column Number ###
     # @param s, a string
     # @return an integer
     def titleToNumber(self, s):
@@ -238,7 +238,7 @@ class Solution:
 
         return ans
 
-    # 172.
+    ### 172. Factorial Trailing Zeroes ###
     # @return an integer
     def trailingZeroes(self, n):
         ans = 0
@@ -248,7 +248,7 @@ class Solution:
 
         return ans
 
-    # 174.
+    ### 174. Dungeon Game ###
     # @param dungeon, a list of lists of integers
     # @return an integer
     def calculateMinimumHP(self, dungeon):
@@ -266,10 +266,9 @@ class Solution:
 
         return dungeon[0][0]
 
-    # 179.
+    ### 179. Largest Number ###
     # @param num, a list of integers
     # @return a string
     def largestNumber(self, num):
         return str(int("".join(sorted(map(str, num), key=lambda x: float(x)/(10**len(x)-1), reverse=True))))
         #return str(int("".join(sorted(map(str, num), cmp=lambda x, y: cmp(int(x+y), int(y+x)), reverse=True))))
-

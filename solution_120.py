@@ -1,5 +1,5 @@
 class Solution:
-    # 120
+    ### 120. Triangle ###
     # @param triangle, a list of lists of integers
     # @return an integer
     def minimumTotal(self, triangle):
@@ -14,7 +14,7 @@ class Solution:
 
         return min(triangle[t-1])
 
-    # 121
+    ### 121. Best Time to Buy and Sell Stock ###
     # @param {integer[]} prices
     # @return {integer}
     def maxProfitI(self, prices):
@@ -27,14 +27,14 @@ class Solution:
 
         return profit
 
-    # 122
+    ### 122. Best Time to Buy and Sell Stock II ###
     # @param {integer[]} prices
     # @param {integer}
     def maxProfitII(self, prices):
         if not prices: return 0
         return sum([prices[i+1] - prices[i]  for i in xrange(len(prices)-1) if prices[i+1] - prices[i] > 0])
 
-    # 123
+    ### 123. Best Time to Buy and Sell Stock III ###
     # @param {integer[]} prices
     # @param {integer}
     def maxProfit(self, prices):
@@ -55,7 +55,7 @@ class Solution:
 
         return res
 
-    # 124
+    ### 124. Binary Tree Maximum Path Sum ###
     # @param {TreeNode} root
     # @return {integer}
     def maxPathSum(self, root):
@@ -74,14 +74,14 @@ class Solution:
         dfs(root)
         return reduce(lambda x, y: max(x, y) ,dp, dp[0])
 
-    # 125
+    ### 125. Valid Palindrome ###
     # @param {string s}
     # @param {boolean}
     def isPalindrome(self, s):
         s = filter(str.isalnum, str(s)).lower()
         return s == s[::-1]
 
-    # 126
+    ### 126. Word Ladder II ###
     # @param start, a string
     # @param end, a string
     # @param dict, a set of string
@@ -118,7 +118,7 @@ class Solution:
 
         return dfs(start, end)
 
-    # 127
+    ### 127. Word Ladder ###
     # @param beginWord, a string
     # @param endWord, a string
     # @param wordDict, s set<string>
@@ -143,7 +143,7 @@ class Solution:
 
         return 0
 
-    # 128
+    ### 128. Longest Consecutive Sequence ###
     # @param {integer[]} nums
     # @return {integer}
     def longestConsecutive(self, nums):
@@ -158,7 +158,7 @@ class Solution:
 
         return con
 
-    # 129
+    ### 129. Sum Root to Leaf Numbers ###
     # @param {TreeNode} root
     # @return {integer}
     def sumNumbers(self, root):

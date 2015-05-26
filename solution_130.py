@@ -1,5 +1,5 @@
 class Solution:
-    # 130
+    ### 130. Surrounded Regions ###
     # @param {charactar[][]} board
     # @return {void} Do not return anythin, modify board in-place instead.
     def solve(self, board):
@@ -39,7 +39,7 @@ class Solution:
         board[:] = [''.join(x) for x in board]
         return
 
-    # 131
+    ### 131. Palindrome Partitioning ###
     # @param s, string
     # @return a list of lists of string
     def partition(self, s):
@@ -52,7 +52,7 @@ class Solution:
 
         return can
 
-    # 132
+    ### 132. Palindrome Partitioning II ##
     # abcdcbaabcdc 2
     # @param {string} s
     # @oaram {integer}
@@ -80,7 +80,7 @@ class Solution:
 
         return dp[l-1]
 
-    # 133
+    ### 133. Clone Graph ###
     # @param node, a undirected graph node
     # @return a undirected graph node
     def cloneGraph(self, node):
@@ -104,7 +104,7 @@ class Solution:
 
         return head
 
-    # 134
+    ### 134. Gas Station ###
     # @param {integer[]} gas
     # @param {integer[]} cost
     # @return {integer}
@@ -126,7 +126,7 @@ class Solution:
 
         return -1
 
-    # 135
+    ### 135. Candy ###
     # @param {integer[]} ratings
     # @return {integer}
     def candy(self, ratings):
@@ -141,13 +141,13 @@ class Solution:
 
         return sum(cnt)
 
-    # 136
+    ### 136. Single Number ###
     # @param {integer[]} nums
     # @return {integer}
     def singleNumberI(self, nums):
         return reduce(int.__xor__, nums)
 
-    # 137
+    ### 137. Single Number II  ###
     # @param {integer[]} nums
     # @return {integer}
     def singleNumber(self, nums):
@@ -161,7 +161,7 @@ class Solution:
 
         return (high << 1) + low
 
-    # 138
+    ### 138. Copy List with Random Pointer ###
     # @param head, a RandomListNode
     # @return a RandomListNode
     def copyRandomList(self, head):
@@ -180,7 +180,7 @@ class Solution:
 
         return dummy.get(head)
 
-    # 139
+    ### 139. Word Break ###
     # @param s, a string
     # @param wordDict, a set <string>
     # @return a boolean
