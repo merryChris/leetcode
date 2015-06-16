@@ -1,4 +1,41 @@
 class Solution:
+    ### 80. Remove Duplicates from Sorted Array II ###
+    # @param {integer[]} nums
+    # @return {integer}
+    def removeDuplicates(self, nums):
+        if not nums: return 0
+
+        tail = 0
+        for i in xrange(1,len(nums)):
+            if tail == 0 or nums[i] != nums[tail-1]:
+                tail += 1
+                nums[tail] = nums[i]
+        nums = nums[:tail+1]
+        return tail+1
+
+    ### 81. Search in Rotated Sorted Array II ###
+    # @param {integer[]} nums
+    # @param {integer} target
+    # @return {boolean}
+    def search(self, nums, target):
+        if not nums: return -1
+
+        def dfs(l, r, n):
+            if nums[l] == n or nums[r] == n: return True
+            if l >= r-1: return False
+
+            mid = (l+r) >> 1
+            if nums[mid] == n: return True
+            if nums[mid] == nums[l] or nums[mid] == nums[r]: return dfs(l+1, r-1, n)
+            if n > nums[l]:
+                if nums[mid] > nums[l] and nums[mid] < n: return dfs((l+r+1)>>1, r, n)
+                return dfs(l, mid, n)
+            else:
+                if nums[mid] < nums[l] and nums[mid] > n: return dfs(l, mid, n)
+                return dfs((l+r+1)>>1, r, n)
+
+        return dfs(0, len(nums)-1, target)
+
     ### 82. Remove Duplicates from Sorted List II ###
     # @param {ListNode} head
     # @return {ListNode}
@@ -101,7 +138,18 @@ class Solution:
     # @param {string} s1
     # @param {string} s2
     # @return {boolean}
-    #def isScramble(self, s1, s2):
+    def isScramble(self, s1, s2):
+        def dfs(a, b):
+            if sorted(a) != sorted(b): return False
+            elif a == b or len(a) <= 3: return True
+
+            for i in xrange(1,len(a)):
+                if (dfs(a[:i], b[:i]) and dfs(a[i:], b[i:])) or (dfs(a[:i], b[-i:]) and dfs(a[i:], b[:-i])):
+                    return True
+
+            return False
+
+        return dfs(s1, s2)
 
     ### 88. Merge Sorted Array ###
     # @param {integer[]} nums1
