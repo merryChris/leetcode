@@ -40,8 +40,8 @@ class Solution:
         return
 
     ### 131. Palindrome Partitioning ###
-    # @param s, string
-    # @return a list of lists of string
+    # @param {string} s
+    # @return {string[][]}
     def partition(self, s):
         if not s: return [[]]
 
@@ -81,8 +81,8 @@ class Solution:
         return dp[l-1]
 
     ### 133. Clone Graph ###
-    # @param node, a undirected graph node
-    # @return a undirected graph node
+    # @param {a undirected graph node} node
+    # @return {a undirected graph node}
     def cloneGraph(self, node):
         if not node: return None
 
@@ -162,8 +162,8 @@ class Solution:
         return (high << 1) + low
 
     ### 138. Copy List with Random Pointer ###
-    # @param head, a RandomListNode
-    # @return a RandomListNode
+    # @param {a RandomListNode} head
+    # @return {a RandomListNode}
     def copyRandomList(self, head):
         if not head: return None
 
@@ -181,9 +181,9 @@ class Solution:
         return dummy.get(head)
 
     ### 139. Word Break ###
-    # @param s, a string
-    # @param wordDict, a set <string>
-    # @return a boolean
+    # @param {string} s
+    # @param {set<string>} wordDict
+    # @return {boolean}
     #def wordBreak(self, s, wordDict):
     def wordBreakI(self, s, wordDict):
         l = len(s)

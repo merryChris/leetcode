@@ -1,7 +1,7 @@
 class Solution:
     ### 187. Repeated DNA Sequences ###
-    # @param s, a string
-    # @return a list of strings
+    # @param {string} s
+    # @return {string[]}
     def findRepeatedDnaSequences(self, s):
         l = len(s)
         record = {}
@@ -38,16 +38,16 @@ class Solution:
 
 
     ### 189. Rotate Array ###
-    # @param nums, a list of integer
-    # @param k, num of steps
-    # @return nothing, please modify the nums list in-place
+    # @param {integer[]} nums
+    # @param {integer} k, num of steps
+    # @return {void}, please modify the nums list in-place
     def rotate(self, nums, k):
         k %= len(nums)
         nums[:] = nums[-k:] + nums[:-k]
 
     ### 190. Reverse Bits ###
-    # @param n, an integer
-    # @return an integer
+    # @param {integer} n
+    # @return {integer}
     def reverseBits(self, n):
         #NOTE: 'format' function
         # < : Left align(default)
@@ -64,8 +64,8 @@ class Solution:
         return n
 
     ### 191. Number of 1 Bits ###
-    # @param n, an integer
-    # @return an integer
+    # @param {integer} n
+    # @return {integer}
     def hammingWeight(self, n):
         cnt = 0
         while n:
@@ -93,8 +93,8 @@ class Solution:
         return max(left, taken)
 
     ### 199. Binary Tree Right Side View ###
-    # @param root, a tree node
-    # @return a list of integers
+    # @param {TreeNode} root
+    # @return {integer[]}
     def rightSideView(self, root):
         if not root: return []
 
@@ -116,8 +116,8 @@ class Solution:
         return ans
 
     ### 200. Number of Islands ###
-    # @param grid, a list of list of characters
-    # @return an integer
+    # @param {string[]} grid
+    # @return {integer}
     def numIslands(self, grid):
         if not grid: return 0
 
@@ -143,9 +143,9 @@ class Solution:
         return cnt
 
     ### 201. Bitwise AND of Numbers Range ###
-    # @param m, an integer
-    # @param n, an integer
-    # return an integer
+    # @param {integer} m
+    # @param {integer} n
+    # return {integer}
     def rangeBitwiseAnd(self, m, n):
         if m == n: return m
 

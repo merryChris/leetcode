@@ -1,8 +1,8 @@
 class Solution:
     ### 140. Word Break II ###
-    # @param s, a string
-    # @param wordDict, a set<string>
-    # @return
+    # @param {string} s
+    # @param {set<string>} wordDict
+    # @return {string[]}
     def wordBreak(self, s, wordDict):
         l = len(s)
         dp = [[] for i in xrange(l+1)]
@@ -25,8 +25,8 @@ class Solution:
         return dfs(l)
 
     ### 141. Linked List Cycle ###
-    # @param head, a ListNode
-    # @return a boolean
+    # @param {ListNode} head
+    # @return {boolean}
     def hasCycle(self, head):
         if not head or not head.next: return False
 
@@ -42,8 +42,8 @@ class Solution:
         return flag
 
     ### 142. Linked List Cycle II ###
-    # @param head, a listNode
-    # @return a list node
+    # @param {ListNode} head
+    # @return {ListNode}
     def detectCycle(self, head):
         if not head or not head.next: return None
 
@@ -65,8 +65,8 @@ class Solution:
         return one
 
     ### 143. Reorder List ###
-    # @param head, a ListNode
-    # @return nothing
+    # @param {ListNode} head
+    # @return {void}
     def reorderList(self, head):
         le, cur= 0, head
         while cur:

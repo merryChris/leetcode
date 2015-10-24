@@ -1,6 +1,6 @@
 class Solution:
     ### 150. Evaluate Reverse Polish Notation ###
-    # @param {string{}} tokens
+    # @param {string[]} tokens
     # @return {integer}
     def evalRPN(self, tokens):
         stack = []
@@ -21,14 +21,14 @@ class Solution:
         return int(stack.pop())
 
     ### 151. Reverse Words in a String ###
-    # @param s, a string
-    # @return a string
+    # @param {string} s
+    # @return {string}
     def reverseWords(self, s):
         return ' '.join(s.split()[::-1])
 
     ### 152. Maximum Product Subarray ###
-    # @param A, a list of integers
-    # @return an integer
+    # @param {integer[]} A
+    # @return {integer}
     def maxProduct(self, A):
         ans = A[0]
         B = []
@@ -47,8 +47,8 @@ class Solution:
         return ans
 
     ### 153 & 154. Find Minimum in Rotated Sorted Array ###
-    # @param num, a list of integer
-    # @return an integer
+    # @param {integer[]} num
+    # @return {integer}
     def findMin(self, num):
         l = 0
         r = len(num)-1
@@ -64,8 +64,9 @@ class Solution:
         return min(num[l], num[r])
 
     ### 160. Intersection of Two Linked Lists ###
-    # @param two ListNodes
-    # return the intersected ListNode
+    # @param {ListNode} headA
+    # @param {ListNode} headB
+    # return {ListNode}
     def getIntersectionNode(self, headA, headB):
         flag = None
         cnt = 0
@@ -88,8 +89,8 @@ class Solution:
         return flag
 
     ### 162. Find Peak Element ###
-    # @param num, a list of integer
-    # @return an integer
+    # @param {integer[]} num
+    # @return {integer}
     def findPeakElement(self, num):
         n = len(num)
         if n <= 1: return 0
@@ -107,8 +108,8 @@ class Solution:
         return l+2
 
     ### 164. Maximum Gap ###
-    # @param num, a list of integer
-    # @return an integer
+    # @param {integer[]} num
+    # @return {integer}
     def maximumGap(self, num):
         n = len(num)
         if n < 2: return 0
@@ -134,9 +135,9 @@ class Solution:
         return ans
 
     ### 165. Compare Version Numbers ###
-    # @param version1, a string
-    # @param version2, a string
-    # @return an integer
+    # @param {string} version1
+    # @param {string} version2
+    # @return {integer}
     def compareVersion(self, version1, version2):
         category1 = map(int, version1.split('.'))
         category2 = map(int, version2.split('.'))
@@ -157,7 +158,9 @@ class Solution:
         return ans
 
     ### 166. Fraction to Recurring Decimal ###
-    # @return a string
+    # @param {integer} numerator
+    # @param {integer} denominator
+    # @return {string}
     def fractionToDecimal(self, numerator, denominator):
         flag = None
         if numerator * denominator < 0: flag = True
@@ -186,7 +189,8 @@ class Solution:
 
 
     ### 168. Excel Sheet Column Title ###
-    # @return a string
+    # @param {integer} num
+    # @return {string}
     def convertToTitle(self, num):
         cnt = []
         while num:
@@ -205,8 +209,8 @@ class Solution:
         return ans[::-1]
 
     ### 169. Majority Element ###
-    # @param num, a list of integers
-    # @return an integer
+    # @param {integer[]} num
+    # @return {integer}
     def majorityElement(self, num):
         half = len(num)/2
         cnt = []
@@ -228,8 +232,8 @@ class Solution:
         return ans
 
     ### 171. Excel Sheet Column Number ###
-    # @param s, a string
-    # @return an integer
+    # @param {string} s
+    # @return {integer}
     def titleToNumber(self, s):
         ans = 0
         for i in xrange(len(s)):
@@ -239,7 +243,8 @@ class Solution:
         return ans
 
     ### 172. Factorial Trailing Zeroes ###
-    # @return an integer
+    # @return {integer} n
+    # @return {integer}
     def trailingZeroes(self, n):
         ans = 0
         while n:
@@ -249,8 +254,8 @@ class Solution:
         return ans
 
     ### 174. Dungeon Game ###
-    # @param dungeon, a list of lists of integers
-    # @return an integer
+    # @param {integer[][]} dungeon
+    # @return {integer}
     def calculateMinimumHP(self, dungeon):
         m = len(dungeon)
         n = len(dungeon[0])
@@ -267,8 +272,8 @@ class Solution:
         return dungeon[0][0]
 
     ### 179. Largest Number ###
-    # @param num, a list of integers
-    # @return a string
+    # @param {integer[]} num
+    # @return {string}
     def largestNumber(self, num):
         return str(int("".join(sorted(map(str, num), key=lambda x: float(x)/(10**len(x)-1), reverse=True))))
         #return str(int("".join(sorted(map(str, num), cmp=lambda x, y: cmp(int(x+y), int(y+x)), reverse=True))))

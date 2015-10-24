@@ -98,8 +98,8 @@ class Solution:
         return dp[lt]
 
     ### 116 & 117. Populating Next Right Pointers in Each Node ###
-    # @param root, a tree link node
-    # @return nothing
+    # @param {TreeLinkNode} root
+    # @return {void}
     def connect(self, root):
         if not root: return
 

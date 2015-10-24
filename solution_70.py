@@ -1,7 +1,7 @@
 class Solution:
     ### 70. Climbing Stairs ###
     # @param {integer} n
-    # @return (integer)
+    # @return {integer}
     def climbStairs(self, n):
         if n <= 1: return 1
 

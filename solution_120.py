@@ -1,7 +1,7 @@
 class Solution:
     ### 120. Triangle ###
-    # @param triangle, a list of lists of integers
-    # @return an integer
+    # @param {integer[]} triangle
+    # @return {integer}
     def minimumTotal(self, triangle):
         t = len(triangle)
         for i in xrange(0,t-1):
@@ -82,10 +82,10 @@ class Solution:
         return s == s[::-1]
 
     ### 126. Word Ladder II ###
-    # @param start, a string
-    # @param end, a string
-    # @param dict, a set of string
-    # @return a list of lists of string
+    # @param {string} start
+    # @param {string} end
+    # @param {set<string>} dict
+    # @return {string[][]}
     def findLadders(self, start, end, dict):
         queue = [(start,1)]
         path = {start: []}
@@ -119,10 +119,10 @@ class Solution:
         return dfs(start, end)
 
     ### 127. Word Ladder ###
-    # @param beginWord, a string
-    # @param endWord, a string
-    # @param wordDict, s set<string>
-    # @return an integer
+    # @param {string} beginWord
+    # @param {string} endWord
+    # @param {set<string>} wordDict
+    # @return {integer}
     def ladderLength(self, beginWord, endWord, wordDict):
         queue = [(beginWord,1,0), (endWord,1,1)]
         vis = {beginWord: (1,0), endWord: (1,1)}
