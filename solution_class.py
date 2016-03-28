@@ -46,22 +46,29 @@ class TrieNode:
     def __init__(self):
         self.chd = [None] * 26
         self.end = False
+        self.bj = -1
+
+    # get ordinal number
+    def get_ord(self, x):
+        return ord(x)-97
 
 class Trie:
 
+    # initialize your data structure here.
     def __init__(self):
         self.root = TrieNode()
 
     # @param {string} word
     # @return {void}
     # Inserts a word into the trie.
-    def insert(self, word):
+    def insert(self, word, mark=-1):
         cur = self.root
         for x in word:
-            idx = ord(x)-97
+            idx = self.root.get_ord(x)
             if not cur.chd[idx]: cur.chd[idx] = TrieNode()
             cur = cur.chd[idx]
         cur.end = True
+        if mark != -1: cur.bj = mark
 
     # @param {string} word
     # @return {boolean}
@@ -69,7 +76,7 @@ class Trie:
     def search(self, word):
         cur = self.root
         for x in word:
-            idx = ord(x)-97
+            idx = self.root.get_ord(x)
             cur = cur.chd[idx]
             if not cur: return False
 
@@ -82,8 +89,51 @@ class Trie:
     def startsWith(self, prefix):
         cur = self.root
         for x in prefix:
-            idx = ord(x)-97
+            idx = self.root.get_ord(x)
             cur = cur.chd[idx]
             if not cur: return False
 
         return True
+
+### 211. Add and Search Word - Data structure design ###
+class WordDictionary():
+
+    # initialize your data structure here.
+    def __init__(self):
+        self.root = TrieNode()
+
+    # get ordinal number
+    def get_ord(self, x):
+        return ord(x)-97
+
+    # @param {string} word
+    # @return {void}
+    # Adds a word into the data structure.
+    def addWord(self, word):
+        cur = self.root
+        for x in word:
+            idx = self.get_ord(x)
+            if not cur.chd[idx]: cur.chd[idx] = TrieNode()
+            cur = cur.chd[idx]
+        cur.end = True
+
+    # @param {string} word
+    # @return {boolean}
+    # Returns if the word is in the data structure. A word could
+    # contain the dot character '.' to represent any one letter.
+    def search(self, word):
+
+        def internal_search(cur, word):
+            if not word: return cur.end
+
+            if word[0] == '.':
+                for c in cur.chd:
+                    if c and internal_search(c, word[1:]):
+                        return True
+            else:
+                idx = ord(word[0])-97
+                if cur.chd[idx] and internal_search(cur.chd[idx], word[1:]):
+                    return True
+            return False
+
+        return internal_search(self.root, word)

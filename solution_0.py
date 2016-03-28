@@ -104,7 +104,7 @@ class Solution:
 
         ss = '\001'.join(['']+list(s)+[''])
         dp = [0] * len(ss)
-        pivot = right = res = bj= -1
+        pivot = right = res = bj = -1
         for i in xrange(len(ss)):
             r = 1
             if right >= i:
