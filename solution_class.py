@@ -139,7 +139,7 @@ class WordDictionary():
         return internal_search(self.root, word)
 
 ### 225. Implement Stack using Queues ###
-class Stack():
+class Stack:
 
     # initialize your data structure here.
     def __init__(self):
@@ -167,3 +167,35 @@ class Stack():
     # @return {boolean}
     def empty(self):
         return False if self.q else True
+
+### 232. Implement Queue using Stacks ###
+class Queue:
+
+    # initialize your data structure here.
+    def __init__(self):
+        self.s1, self.s2 = [], []
+
+    # @param {integer} x
+    # @return {void}
+    def push(self, x):
+        self.s1.append(x)
+
+    # @return {void}
+    def pop(self):
+        if not self.s2:
+            while self.s1:
+                self.s2.append(self.s1.pop())
+
+        if self.s2: self.s2.pop()
+
+    # @return {integer}
+    def peek(self):
+        if not self.s2:
+            while self.s1:
+                self.s2.append(self.s1.pop())
+
+        return self.s2[-1]
+
+    # @return {boolean}
+    def empty(self):
+        return not self.s1 and not self.s2
