@@ -1,5 +1,5 @@
 ### 146. LRU Cache ###
-class LRUCache:
+class LRUCache(object):
 
     # @param capacity, an integer
     def __init__(self, capacity):
@@ -41,7 +41,7 @@ class LRUCache:
         self._update()
 
 ### 208. Implement Trie (Prefix Tree) ###
-class TrieNode:
+class TrieNode(object):
     # Initialize your data structure here.
     def __init__(self):
         self.chd = [None] * 26
@@ -52,7 +52,7 @@ class TrieNode:
     def get_ord(self, x):
         return ord(x)-97
 
-class Trie:
+class Trie(object):
 
     # initialize your data structure here.
     def __init__(self):
@@ -96,7 +96,7 @@ class Trie:
         return True
 
 ### 211. Add and Search Word - Data structure design ###
-class WordDictionary():
+class WordDictionary(object):
 
     # initialize your data structure here.
     def __init__(self):
@@ -139,7 +139,7 @@ class WordDictionary():
         return internal_search(self.root, word)
 
 ### 225. Implement Stack using Queues ###
-class Stack:
+class Stack(object):
 
     # initialize your data structure here.
     def __init__(self):
@@ -169,7 +169,7 @@ class Stack:
         return False if self.q else True
 
 ### 232. Implement Queue using Stacks ###
-class Queue:
+class Queue(object):
 
     # initialize your data structure here.
     def __init__(self):
@@ -199,3 +199,30 @@ class Queue:
     # @return {boolean}
     def empty(self):
         return not self.s1 and not self.s2
+
+class PeekingIterator(object):
+
+    # Initialize your data structure here.
+    # @param {iterator} Iterator
+    def __init__(self, iterator):
+        self.iterator = iterator
+        self.next_val = None
+        if self.iterator.hasNext():
+            self.next_val = self.iterator.next()
+
+    # Returns the next element in the iteration without advancing the iterator.
+    # @return {integer}
+    def peek(self):
+        return self.next_val
+
+    # @return {integer}
+    def next(self):
+        res = self.next_val
+        if self.iterator.hasNext(): self.next_val = self.iterator.next()
+        else: self.next_val = None
+
+        return res
+
+    # @return {boolean}
+    def hasNext(self):
+        return self.next_val != None
