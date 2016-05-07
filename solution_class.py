@@ -200,6 +200,7 @@ class Queue(object):
     def empty(self):
         return not self.s1 and not self.s2
 
+### 284. Peeking Iterato ###
 class PeekingIterator(object):
 
     # Initialize your data structure here.
@@ -226,3 +227,71 @@ class PeekingIterator(object):
     # @return {boolean}
     def hasNext(self):
         return self.next_val != None
+
+### 295. Find Median from Data Stream ###
+class MedianFinder(object):
+
+    # Initialize your data structure here.
+    def __init__(self):
+        self.left, self.right = [], []
+
+    # Adds a num into the data structure.
+    # @param {integer} num
+    # @return {void}
+    def addNum(self, num):
+        import heapq
+        cur = heapq.heappushpop(self.left, -num)
+        if len(self.left) > len(self.right):
+            heapq.heappush(self.right, -cur)
+        else:
+            cur = heapq.heappushpop(self.right, -cur)
+            heapq.heappush(self.left, -cur)
+
+
+    # Returns the median of current data stream
+    # @return {float}
+    def findMedian(self):
+        if len(self.left) > len(self.right): return -self.left[0]
+        return float(self.right[0]-self.left[0])/2
+
+
+### 297. Serialize and Deserialize Binary Tree ###
+class Codec(object):
+
+    # Encodes a tree to a single string.
+    # @param {TreeNode} root
+    # @return {string}
+    def serialize(self, root):
+        if not root: return ''
+
+        lstr = self.serialize(root.left)
+        rstr = self.serialize(root.right)
+        res = [str(root.val), str(len(lstr)), lstr, str(len(rstr)), rstr]
+        return '#'.join(res)
+
+    # Decodes your encoded data to tree.
+    # @param {string} data
+    # @return {TreeNode}
+    def deserialize(self, data):
+        if not data: return None
+
+        def parse_first_num(st):
+            if not data: return None, -1
+
+            val, pos = None, -1
+            for i in range(st, len(data)):
+                if data[i] == '#':
+                    pos = i
+                    val = int(data[st:i])
+                    break
+            return val, pos
+
+        rval, pos = parse_first_num(0)
+        llen, lpos = parse_first_num(pos+1)
+        rlen, rpos = parse_first_num(lpos+llen+2)
+
+        root = TreeNode(rval)
+        root.left  = self.deserialize(data[lpos+1:lpos+llen+1])
+        root.right = self.deserialize(data[rpos+1:rpos+rlen+1])
+
+        return root
