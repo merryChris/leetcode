@@ -28,7 +28,7 @@ class LRUCache(object):
 
     # @param key, an integer
     # @param value, an integer
-    # @return nothing
+    # @return {void}
     def set(self, key, value):
         if key in self.record:
             self.queue.append(key)
@@ -84,8 +84,7 @@ class Trie(object):
 
     # @param {string} prefix
     # @return {boolean}
-    # Returns if there is any word in the trie
-    # that starts with the given prefix.
+    # Returns if there is any word in the trie that starts with the given prefix.
     def startsWith(self, prefix):
         cur = self.root
         for x in prefix:
