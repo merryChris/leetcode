@@ -86,36 +86,17 @@ class Solution:
     # @param {integer[]} nums
     # @return {void} Do not return anything, modify nums in-place instead
     def sortColors(self, nums):
-        head, tail = 0, len(nums)-1
-        l, r = head, tail
-        while head <= tail:
-            while head <= tail:
-                if nums[head] == 0:
-                    nums[l] = nums[head]
-                    l += 1
-                    head += 1
-                elif nums[head] == 1:
-                    head += 1
-                else: break
-            while head <= tail:
-                if nums[tail] == 2:
-                    nums[r] = nums[tail]
-                    r -= 1
-                    tail -= 1
-                elif nums[tail] == 1:
-                    tail -= 1
-                else: break
-            if head > tail: break
-            tmp = nums[head]
-            nums[l] = nums[tail]
-            nums[r] = tmp
-            l += 1
-            r -= 1
-            head += 1
-            tail -= 1
-        nums[l:r+1] = [1] * (r-l+1)
+        if not nums: return
 
-        return
+        i, j, k = 0, 0, len(nums)-1
+        while j<= k:
+            if nums[j] == 0:
+                if i != j: nums[i], nums[j] = nums[j], nums[i]
+                i += 1; j += 1
+            elif nums[j] == 1: j += 1
+            else:
+                nums[j], nums[k] = nums[k], nums[j]
+                k -= 1
 
     ### 76. Minimum Window Substring ###
     # @param {string} s

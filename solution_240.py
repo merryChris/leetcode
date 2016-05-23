@@ -97,7 +97,7 @@ class Solution:
 
         return num == 1
 
-    ### 264, Ugly Number II ###
+    ### 264. Ugly Number II ###
     # @param {integer} n
     # @return {integer}
     def nthUglyNumber(self, n):
