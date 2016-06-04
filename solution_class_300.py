@@ -103,3 +103,59 @@ class NumArray(object):
         if not (0<=i<self.n and 0<=j<self.n and i<=j): return 0
 
         return self.sum(j)-self.sum(i-1)
+
+### 341. Flatten Nested List Iterator ###
+class NestedIterator(object):
+
+    # Initialize your data structure here.
+    # @param {NestedInteger[]} nestedList
+    def __init__(self, nestedList):
+        self.stack = nestedList[::-1]
+
+    # @return {integer}
+    def next(self):
+        return self.stack.pop().getInteger()
+
+    # @return {boolean}
+    def hasNext(self):
+        while self.stack and not self.stack[-1].isInteger():
+            top = self.stack.pop()
+            self.stack += top.getList()[::-1]
+        return len(self.stack)>0
+
+### 352. Data Stream as Disjoint Intervals ###
+class SummaryRanges(object):
+
+    # Initialize your data structure here.
+    def __init__(self):
+        self.have, self.left, self.right = set(), {}, {}
+
+    # @param {integer} val
+    # @return {void}
+    def addNum(self, val):
+        if val in self.have: return
+
+        self.have.add(val)
+        if val-1 in self.right and val+1 in self.left:
+            l, r = self.right.pop(val-1), self.left.pop(val+1)
+            self.left.pop(l.start)
+            self.right.pop(r.end)
+            interval = Interval(l.start, r.end)
+            self.left[l.start], self.right[r.end] = interval, interval
+        elif val-1 in self.right:
+            l = self.right.pop(val-1)
+            self.left.pop(l.start)
+            interval = Interval(l.start, val)
+            self.left[l.start], self.right[val] = interval, interval
+        elif val+1 in self.left:
+            r = self.left.pop(val+1)
+            self.right.pop(r.end)
+            interval = Interval(val, r.end)
+            self.left[val], self.right[r.end] = interval, interval
+        else:
+            interval = Interval(val, val)
+            self.left[val], self.right[val] = interval, interval
+
+    # @return {Interval[]}
+    def getIntervals(self):
+        return [self.left[key] for key in sorted(self.left.keys())]
