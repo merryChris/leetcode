@@ -55,7 +55,7 @@ class Solution:
         import heapq
         kfreq = set(heapq.nlargest(k, rec.values()))
 
-        return [k for k,v in rec.items() if v in kfreq]
+        return [key for key,val in rec.items() if val in kfreq]
 
     ### 349. Intersection of Two Arrays ###
     # @param {integer[]} nums1
@@ -82,5 +82,60 @@ class Solution:
                 rec[x] -= 1
                 res.append(x)
                 if rec[x] == 0: rec.pop(x)
+
+        return res
+
+    ### 354. Russian Doll Envelopes ###
+    # @param {integer[][]} envelopes
+    # @return {integer}
+    def maxEnvelopes(self, envelopes):
+        if not envelopes: return 0
+
+        envelopes.sort(key=lambda e: (e[0], -e[1]))
+        dp = []
+        for _, h in envelopes:
+            l, r = 0, len(dp)-1
+            while l <= r:
+                mid = (l+r)/2
+                if dp[mid] < h: l=mid+1
+                else: r=mid-1
+            if l == len(dp): dp.append(h)
+            else: dp[l] = h
+
+        return len(dp)
+
+    ### 357. Count Numbers with Unique Digits ###
+    # @param {integer} n
+    # @return {integer}
+    def countNumbersWithUniqueDigits(self, n):
+        res, cur = 1, 1
+        for i in range(min(n,10)):
+            if i == 0: cur *= 9
+            elif i <= 9: cur *= 10-i
+            res += cur
+
+        return res
+
+    ### 363. Max Sum of Rectangle No Larger Than K ###
+    # @param {integer[][]}
+    # @param {integer} k
+    # @return {integer}
+    def maxSumSubmatrix(self, matrix, k):
+        if not matrix or not matrix[0]: return 0
+
+        import bisect
+        res = float('-inf')
+        for i in range(0, len(matrix[0])):
+            val = [0] * len(matrix)
+            for j in range(i, len(matrix[0])):
+                rec, cur = [0], 0
+                for p in range(len(matrix)):
+                    val[p] += matrix[p][j]
+                    cur += val[p]
+                    pos = bisect.bisect_left(rec, cur-k)
+                    if pos <= p:
+                        res = max(res, cur-rec[pos])
+                        if res == k: return k
+                    bisect.insort(rec, cur)
 
         return res

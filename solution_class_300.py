@@ -159,3 +159,63 @@ class SummaryRanges(object):
     # @return {Interval[]}
     def getIntervals(self):
         return [self.left[key] for key in sorted(self.left.keys())]
+
+### 355. Design Twitter ###
+class Twitter(object):
+
+    # Initialize your data structure here.
+    def __init__(self):
+        self.timestamp = 0
+        self.tweets = {}
+        self.follows = {}
+
+    # Compose a new tweet.
+    # @param {integer} userId
+    # @param {integer} tweetId
+    # @return {void}
+    def postTweet(self, userId, tweetId):
+        if userId not in self.tweets: self.tweets[userId] = []
+
+        if len(self.tweets[userId]) == 10: self.tweets[userId].pop(0)
+        self.tweets[userId].append((self.timestamp, tweetId))
+        self.timestamp += 1
+
+    # Retrieve the 10 most recent tweet ids in the user's news feed. Each item in the news feed must be posted by users
+    # who the user followed or by the user herself. Tweets must be ordered from most recent to least recent.
+    # @param {integer} userId
+    # @return {integer[]}
+    def getNewsFeed(self, userId):
+        cache = []
+        if userId in self.tweets: cache.extend(self.tweets[userId])
+        import heapq
+        heapq.heapify(cache)
+
+        if userId in self.follows:
+            for fo in self.follows[userId]:
+                if fo not in self.tweets: continue
+                for td in self.tweets[fo]:
+                    if len(cache) == 10: heapq.heappushpop(cache, td)
+                    else: heapq.heappush(cache, td)
+
+        res = []
+        while cache: res.append(heapq.heappop(cache)[1])
+        return res[::-1]
+
+    # Follower follows a followee. If the operation is invalid, it should be a no-op.
+    # @param {integer} followerId
+    # @param {integer} followeeId
+    # @return {void}
+    def follow(self, followerId, followeeId):
+        if followerId == followeeId: return
+        if followerId not in self.follows:
+            self.follows[followerId] = set()
+        self.follows[followerId].add(followeeId)
+
+    # Follower unfollows a followee. If the operation is invalid, it should be a no-op.
+    # @param {integer} followerId
+    # @param {integer} followeeId
+    # @return {void}
+    def unfollow(self, followerId, followeeId):
+        if followerId not in self.follows: return
+        if followeeId not in self.follows[followerId]: return
+        self.follows[followerId].remove(followeeId)
