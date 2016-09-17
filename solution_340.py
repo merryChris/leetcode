@@ -139,3 +139,36 @@ class Solution:
                     bisect.insort(rec, cur)
 
         return res
+
+    ### 365. Water and Jug Problem ###
+    # @param {integer} x
+    # @param {integer} y
+    # @param {integer} z
+    # @return {boolean}
+    def canMeasureWater(self, x, y, z):
+      def gcd(a, b):
+        if b == 0: return a
+        return gcd(b, a%b)
+
+      return z == 0 or (x+y >= z and z % gcd(x, y) == 0)
+
+    ### 367. Valid Perfect Square ###
+    # @param {integer} num
+    # @return {boolean}
+    def isPerfectSquare(self, num):
+      l, r = 0, num
+      while l <= r:
+        mid = (l+r) >> 1
+        if mid*mid == num: return True
+        elif mid*mid < num: l = mid+1
+        else: r = mid-1
+      return False
+
+    ### 368. Largest Divisible Subset ###
+    # @param {integer[]} nums
+    # @return {integer[]}
+    def largestDivisibleSubset(self, nums):
+      S = {-1: set()}
+      for x in sorted(nums):
+        S[x] = max((S[d] for d in S if x % d == 0), key=len) | {x}
+      return list(max(S.values(), key=len))
