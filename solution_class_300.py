@@ -219,3 +219,22 @@ class Twitter(object):
         if followerId not in self.follows: return
         if followeeId not in self.follows[followerId]: return
         self.follows[followerId].remove(followeeId)
+
+### 398. Random Pick Index ###
+class Solution(object):
+
+  # @param {integer[]}
+  def __init__(self, nums):
+    self.nums = nums
+
+  # @param {integer} target
+  # @return {integer}
+  def pick(self, target):
+    import random
+    idx, cnt = -1, 0
+    for i, num in enumerate(self.nums):
+      if num == target:
+        if random.randint(0, cnt) == 0: idx = i
+        cnt += 1
+
+    return idx
