@@ -25,6 +25,42 @@ class Solution(object):
       else: l = mid+1
     return l
 
+  ### 412. Fizz Buzz ###
+  # @param {integer} n
+  # @return {string[]}
+  def fizzBuzz(self, n):
+    if not n: return []
+
+    return [i%3==0 and i%5==0 and 'FizzBuzz' or i%3==0 and 'Fizz' or i%5==0 and 'Buzz' or str(i) for i in range(1,n+1)]
+
+  ### 413. Arithmetic Slices ###
+  # @param {integer[]} A
+  # @return {integer}
+  def numberOfArithmeticSlices(self, A):
+    if not A or len(A) < 3: return 0
+
+    cnt, con = 0, 0
+    for i in range(2, len(A)):
+      if A[i]-A[i-1] == A[i-1]-A[i-2]: con += 1
+      else: con = 0
+      cnt += con
+
+    return cnt
+
+  ### 414. Third Maximum Number ###
+  # @param {integer[]} nums
+  # @return {integer}
+  def thirdMax(self, nums):
+    if not nums: return float('-inf')
+
+    res = [float('-inf')] * 3
+    for num in nums:
+      if num > res[0]: res = [num] + res[:2]
+      elif res[1] < num < res[0]: res = [res[0]] + [num] + [res[1]]
+      elif res[2] < num < res[1]: res[2] = num
+
+    return res[-1] == float('-inf') and res[0] or res[-1]
+
   ### 415. Add Strings ###
   # @param {string} num1
   # @param {string} num2
@@ -60,7 +96,6 @@ class Solution(object):
       if dp[n]: break
     return dp[n]
 
-
   ### 417. Pacific Atlantic Water Flow ###
   # @param {integer[][]} matrix
   # @return {integer[][]}
@@ -90,3 +125,17 @@ class Solution(object):
     bfs()
 
     return res
+
+  ### 419. Battleships in a Board ###
+  # @param {string[][]} board
+  # @return {integer}
+  def countBattleships(self, board):
+    if not board: return 0
+
+    m, n, cnt = len(board), len(board[0]), 0
+    for i in range(m):
+      for j in range(n):
+        if board[i][j] == '.': continue
+        if (i == 0 or board[i-1][j] == '.') and (j == 0 or board[i][j-1] == '.'): cnt += 1
+
+    return cnt
