@@ -220,6 +220,46 @@ class Twitter(object):
         if followeeId not in self.follows[followerId]: return
         self.follows[followerId].remove(followeeId)
 
+### 382. Linked List Random Node ###
+class RandomNodes(object):
+
+  # @param {ListNode} head The linked list's head.
+  # Note that the head is guaranteed to be not null, so it contains at least one node.
+  def __init__(self, head):
+    self.head = head
+
+  # @return {integer} Returns a random node's value.
+  def getRandom(self):
+    res, l, cur = 0, 0, self.head
+
+    import random
+    while cur:
+      l += 1
+      if int(random.random() * l) == 0:
+        res = cur.val
+      cur = cur.next
+    return res
+
+### 384. Shuffle an Array ###
+class Solution(object):
+
+  # @param {integer[]} nums
+  def __init__(self, nums):
+    self.nums = nums
+
+  # @return {integer[]}
+  # Resets the array to its original configuration and return it.
+  def reset(self):
+    return self.nums
+
+  # @return {integer[]}
+  # Returns a random shuffling of the array.
+  def shuffle(self):
+    res = [_ for _ in self.nums]
+    import random
+    random.shuffle(res)
+    return res
+
 ### 398. Random Pick Index ###
 class Solution(object):
 
